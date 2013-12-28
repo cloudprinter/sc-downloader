@@ -19,10 +19,6 @@ preg_match("/https\:(.*?)\"/",$result,$mlink);
 $shortlink = shorten_link(trim($mlink[0],'"'));
 if($mlink[1])
 {
-	$history = file_get_contents("history.json");
-	$arr = json_decode($history);
-	$arr[] = array("name"=>basename($link),"link"=>$shortlink);
-	file_put_contents("history.json",json_encode($arr));
 	echo json_encode(array("status"=>"0","name"=>basename($link),"link"=>$shortlink));
 }
 else
